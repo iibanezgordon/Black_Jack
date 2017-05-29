@@ -36,8 +36,58 @@ class deck(object):
     def shuffle(self):
         random.shuffle(self.deck)
         
-        
-
+def validate_input(datatype, playerA=None):
+    if datatype == 'string':
+        while True:
+            try:
+                result = str(raw_input('Please, Introduce the Required input  '))
+                break
+            except:
+                print 'That is not a valid option, please introduce a valid input'
+        return result
+    elif datatype == 'integer':
+        while True:
+            try:
+                result = int(raw_input('Please, Introduce the Required input  '))
+                break
+            except:
+                print 'That is not a valid option, please introduce a valid input'
+        return result
+    elif datatype == 'Y/N':
+        while True:
+            try:
+                result = raw_input(' (Y/N)  ')
+                if result == 'Y' or result == 'N':
+                    break
+                else:
+                    raise
+            except:
+                print 'That is not a valid option, please introduce a valid input'
+        return result
+    elif datatype == 'credit':
+        while True:
+            try:
+                result = int(raw_input(':  ' ))
+                if result <= playerA.bankroll:
+                    break
+                else:
+                    raise
+            except:
+                    print ' Sorry, answer not valid, must be an integer number of Bitcoins'
+                    print ' You need to have enough funds to bet'
+        return result
+    elif datatype == 'bankrupt':
+        while True:
+            try:
+                result =int(raw_input('Please, Introduce additional credit or 0 for denial  '))
+                check =isinstance(result, ( int, long))
+                if check == True:
+                    break
+                else:
+                    raise
+            except:
+                   print 'That is not a valid option, please introduce an Integer'
+        return result
 
 class player(object):
     '''
